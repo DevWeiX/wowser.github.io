@@ -94,6 +94,8 @@
 <script src="{{ "/js/blog.min.js " | prepend: site.baseurl }}"></script>
 
 
+<script src="{{ "/js/bootstrap3-typeahead.min.js " | prepend: site.baseurl }}"></script>
+
 <!-- async load function -->
 <script>
     function async(u, c) {
@@ -200,9 +202,7 @@
 
         $.getJSON("/search.json").done(function (data) {
             if (data.code == 0) {
-				alert('data='+data);
                 for (var index in data.data) {
-					alert('item-'+index+'='+data.data[index]);
                     var item = data.data[index];
                     names.push(item.title);
                     urls.push(item.url);
@@ -210,7 +210,6 @@
 
                 $("#search-content").typeahead({
                     source: names,
-
                     afterSelect: function (item) {
 						$(".search-tool").css("display", "none");
                         show = false;
