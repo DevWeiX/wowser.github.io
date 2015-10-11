@@ -200,16 +200,14 @@
 
         $.getJSON("/search.json").done(function (data) {
             if (data.code == 0) {
-				alert('data='+data);
                 for (var index in data.data) {
-					alert('item-'+index+'='+data.data[index]);
                     var item = data.data[index];
                     names.push(item.title);
                     urls.push(item.url);
                 }
 
                 $("#search-content").typeahead({
-                    source: names,
+                    source: ["Deluxe Bicycle", "Super Deluxe Trampoline", "Super Duper Scooter"],
 
                     afterSelect: function (item) {
 						$(".search-tool").css("display", "none");
