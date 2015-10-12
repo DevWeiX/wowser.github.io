@@ -1,0 +1,46 @@
+---
+layout: page
+---
+
+<main class="col-md-8 main-content">
+	{% for post in paginator.posts %}
+	<article class="post page">
+		<header class="post-head">
+			<h1 class="post-title">{{ post.title }}</h1>
+			<section class="post-meta">
+				<span class="author">作者：<a href="/about" >{% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %}</a></span> &bull;
+				<time class="post-date">{{ post.date | date: "%B %-d, %Y" }}</time>
+			</section>
+		</header>
+		<section class="post-content">
+			{{ post.content | strip_html | truncate:200 }}
+		</section>
+		<div class="post-permalink">
+			<a href="{{ post.url | prepend: site.baseurl }}" class="btn btn-default">阅读全文</a>
+		</div>
+
+		<footer class="post-footer clearfix">
+			<div class="pull-left tag-list">
+				<i class="fa fa-folder-open-o"></i>
+				{% for tag in page.tags %}
+					&nbsp;<a href="/tags/#{{ tag }}" title="{{ tag }}">{{ tag }}</a>
+				{% endfor %}
+			</div>
+			<div class="pull-right share">
+			</div>
+		</footer>
+	</article>
+	{% endfor %}
+</main>
+
+{% if paginator.total_pages > 1 %}
+<nav class="pagination" role="navigation">
+{% if paginator.previous_page %}
+	<a class="newer-posts" href="../../index.htm" tppabs="http://www.ghostchina.com/"><i class="fa fa-angle-left"></i></a>
+{% endif %}
+	<span class="page-number">第 {{page}} 页 &frasl; 共 {{paginator.total_pages}} 页</span>
+{% if paginator.next_page %}
+	<a class="older-posts" href="../3/index.htm" tppabs="http://www.ghostchina.com/page/3/"><i class="fa fa-angle-right"></i></a>
+{% endif %}
+</nav>
+{% endif %}
