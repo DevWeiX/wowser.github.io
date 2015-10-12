@@ -913,11 +913,11 @@ background: #f6f6f6!important;
 background: #eee!important;
 }
 #ds-thread #ds-reset .ds-post-options {
-border:1px solid #f6f6f6!important;
+border:1px solid #e67e22!important;
 }
 #ds-thread #ds-reset .ds-post-button {
 background: #e9302a!important;
-border: 1px solid #f6f6f6!important;
+border: 1px solid #e67e22!important;
 text-shadow:none!important;
 color:#fff!important;
 font-family:inherit!important;
