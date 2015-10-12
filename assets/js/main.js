@@ -25,9 +25,6 @@ var themeApp = {
 			}
 		});
 	},
-	responsiveIframe: function() {
-		$('.post').fitVids();
-	},
 	sidebarConfig:function() {
 		if(sidebar_left == true) {
 			$('.main-content').addClass('col-md-push-4');
@@ -81,7 +78,6 @@ var themeApp = {
 	},
 	init: function() {
 		themeApp.featuredMedia();
-		themeApp.responsiveIframe();
 		themeApp.sidebarConfig();
 		themeApp.recentPost();
 		themeApp.highlighter();
