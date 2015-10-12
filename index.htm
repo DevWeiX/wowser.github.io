@@ -2,6 +2,10 @@
 layout: page
 ---
 
+<script>
+	var data = {% paginator.posts %};
+	alert(data);
+</script>
 <main class="col-md-8 main-content">
 	{% for post in paginator.posts %}
 	<article class="post page">
