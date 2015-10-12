@@ -42,7 +42,7 @@ layout: page
 {% if paginator.previous_page %}
 	<a class="newer-posts" href="../../index.htm" tppabs="http://www.ghostchina.com/"><i class="fa fa-angle-left"></i></a>
 {% endif %}
-	<span class="page-number">第 {{page}} 页 &frasl; 共 {{paginator.total_pages}} 页</span>
+	<span class="page-number">第 {{ paginator.page }} 页 &frasl; 共 {{ paginator.total_pages }} 页</span>
 {% if paginator.next_page %}
 	<a class="older-posts" href="../3/index.htm" tppabs="http://www.ghostchina.com/page/3/"><i class="fa fa-angle-right"></i></a>
 {% endif %}
