@@ -25,6 +25,10 @@ markdown: kramdown
 kramdown:
   input: GFM
 
+
+analytics :
+    provider : custom
+
 useDuoshuo: true
 useShare: true
 useBaiduAnalysis: true
