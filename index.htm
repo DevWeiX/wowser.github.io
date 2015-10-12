@@ -2,12 +2,8 @@
 layout: page
 ---
 
-<script>
-	var data = {% paginator.posts %};
-	alert(data);
-</script>
 <main class="col-md-8 main-content">
-	{% for post in paginator.posts %}
+	{% for post in site.posts %}
 	<article class="post page">
 		<header class="post-head">
 			<h1 class="post-title">{{ post.title }}</h1>
@@ -39,12 +35,12 @@ layout: page
 
 {% if paginator.total_pages > 1 %}
 <nav class="pagination" role="navigation">
-{% if paginator.previous_page %}
-	<a class="newer-posts" href="../../index.htm" tppabs="http://www.ghostchina.com/"><i class="fa fa-angle-left"></i></a>
-{% endif %}
+	{% if paginator.previous_page %}
+		<a class="newer-posts" href="../../index.htm" tppabs="http://www.ghostchina.com/"><i class="fa fa-angle-left"></i></a>
+	{% endif %}
 	<span class="page-number">第 {{ paginator.page }} 页 &frasl; 共 {{ paginator.total_pages }} 页</span>
-{% if paginator.next_page %}
-	<a class="older-posts" href="../3/index.htm" tppabs="http://www.ghostchina.com/page/3/"><i class="fa fa-angle-right"></i></a>
-{% endif %}
+	{% if paginator.next_page %}
+		<a class="older-posts" href="../3/index.htm" tppabs="http://www.ghostchina.com/page/3/"><i class="fa fa-angle-right"></i></a>
+	{% endif %}
 </nav>
 {% endif %}
