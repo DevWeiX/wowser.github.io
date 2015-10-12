@@ -1,53 +1,96 @@
 ---
 layout: default
 ---
-<main class="col-md-8 main-content">
-	<article class="post page">
-		<header class="post-head">
-			<h1 class="post-title">{{ page.title }}</h1>
-			<section class="post-meta">
-				<span class="author">作者：<a href="/about" >{% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %}</a></span> &bull;
-				<time class="post-date">{{ page.date | date: "%B %-d, %Y" }}</time>
-			</section>
-		</header>
-		<section class="post-content">
-			{{ content }}
-		</section>
-		<footer class="post-footer clearfix">
-			<div class="pull-left tag-list">
-				<i class="fa fa-folder-open-o"></i>
-				<a href="#">Promise</a>, <a href="#">JavaScript</a>
-			</div>
-                <!-- Share start -->
-			    {% if site.useDuoshuo && site.useShare %}
-                <div class="pull-right ds-share"
-                   >
-                    <div class="ds-share-inline">
-                      <ul  class="ds-share-icons-16">
-                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
-                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
-                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
-                      </ul>
-                      <div class="ds-share-icons-more">
-                      </div>
-                    </div>
-                <hr>
-                </div>
-                {% endif %}
-                <!-- Share end-->
+<!-- start main content -->
+<section class="content-wrap">
+	<div class="container">
+		<div class="row">
+		<main class="col-md-8 main-content">
+			<article class="post page">
+				<header class="post-head">
+					<h1 class="post-title">{{ page.title }}</h1>
+					<section class="post-meta">
+						<span class="author">作者：<a href="/about" >{% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %}</a></span> &bull;
+						<time class="post-date">{{ page.date | date: "%B %-d, %Y" }}</time>
+					</section>
+				</header>
+				<section class="post-content">
+					{{ content }}
+				</section>
+				<footer class="post-footer clearfix">
+					<div class="pull-left tag-list">
+						<i class="fa fa-folder-open-o"></i>
+						<a href="#">Promise</a>, <a href="#">JavaScript</a>
+					</div>
+						<!-- Share start -->
+						{% if site.useDuoshuo && site.useShare %}
+						<div class="pull-right ds-share"
+						   >
+							<div class="ds-share-inline">
+							  <ul  class="ds-share-icons-16">
+								<li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+								<li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+								<li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+								<li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+							  </ul>
+							  <div class="ds-share-icons-more">
+							  </div>
+							</div>
+						<hr>
+						</div>
+						{% endif %}
+						<!-- Share end-->
 
-				<!-- Duoshuo start -->
-				{% if site.useDuoshuo %}
-				<div class="comment">
-					<div class="ds-thread" data-thread-key="{{page.id}}" data-title="{{page.title}}" data-url="{{site.url}}{{page.url}}"></div>
+						<!-- Duoshuo start -->
+						{% if site.useDuoshuo %}
+						<div class="comment">
+							<div class="ds-thread" data-thread-key="{{page.id}}" data-title="{{page.title}}" data-url="{{site.url}}{{page.url}}"></div>
+						</div>
+						<!-- 多说评论框 end -->
+						{% endif %}
+						<!-- Duoshuo end -->
+					</footer>
+				</article>
+			</main>
+			<aside class="col-md-4 sidebar">
+				<!-- start tag cloud widget -->
+				<div class="widget">
+					<h4 class="title">社区</h4>
+					<div class="content community">
+						<p>QQ:775594040</p>
+						<p><a href="http://wenda.coding.io" title="" target="_blank"><i class="fa fa-comments"></i> 问答社区</a></p>
+						<p><a href="#" title="" target="_blank"><i class="fa fa-weibo"></i> 官方微博</a></p>
+					</div>
 				</div>
-				<!-- 多说评论框 end -->
-				{% endif %}
-				<!-- Duoshuo end -->
-		</footer>
-	</article>
-</main>
+				<!-- end tag cloud widget -->	
+
+				<!-- start widget -->
+				<div class="widget">
+					<h4 class="title">下载</h4>
+					<div class="content download">
+						<a href="#" class="btn btn-default btn-block">中文版（0.6.0）</a>
+					</div>
+				</div>
+				<!-- end widget -->	
+				<!-- start tag cloud widget -->
+				<div class="widget">
+					<h4 class="title">标签云</h4>
+					<div class="content tag-cloud">
+						{% for tag in site.tags %}  
+							{% if tag[1].size > 1 %}
+								<a href="/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+									{{ tag[0] }}
+								</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+				<!-- end tag cloud widget -->	       
+			</aside>
+		</div>
+	</div>
+</section>
+<!-- end main content -->
 
 {% if site.useDuoshuo %}
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
