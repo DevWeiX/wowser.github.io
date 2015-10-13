@@ -9,7 +9,7 @@ layout: default
 	<div class="post-count"></div>
 </div>
 <script type="text/javascript">
-	var dataStr = '{ {% for tag in site.tags %}{% if tag[0] != site.tags.first[0] %},{% endif %}"{{ tag[0] }}":[{% for post in tag[1] %}{% if post != tag[1].first %},{% endif %}{"url":"{{post.url}}", "title":"{{post.title}}", "author":"{{post.author}}","content":"{{ post.excerpt }}","tags":"{{post.tags}}","date":"{{post.date | date:"%d/%m/%Y"}}"}{% endfor %}]{% endfor %} }';
+	var dataStr = '{ {% for tag in site.tags %}{% if tag[0] != site.tags.first[0] %},{% endif %}"{{ tag[0] }}":[{% for post in tag[1] %}{% if post != tag[1].first %},{% endif %}{"url":"{{post.url}}", "title":"{{post.title}}", "author":"{{post.author}}","content":"{{post.content|strip_newlines|newline_to_br|strip_html|remove:'“'|remove:'”'|truncate:200}}","tags":"{{post.tags}}","date":"{{post.date | date:"%d/%m/%Y"}}"}{% endfor %}]{% endfor %} }';
     var data = jQuery.parseJSON(dataStr);
     var curTag = $.query.get("tag");
     var curData = data[curTag];
