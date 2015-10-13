@@ -2,7 +2,7 @@
 title: Wowser Blog
 SEOTitle: Wowser的博客 | Wowser Blog
 shareTitle: "@Wowser的博客 | Wowser Blog"
-header-img: img/home-bg.jpg
+header-img: /assets/img/home-bg.jpg
 email: dev.weix@gmail.com
 description: "关于前端与设计、黑客与画家 | Wowser，Web & Mobile Lover，Front-End Engineer，UX Designer | 这里是 @Wowser 的个人博客，与你一起发现更大的世界。"
 keyword: "Wowser, @Wowser, Wowser的博客, Wowser Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品"
@@ -37,7 +37,7 @@ useGoogleAnalysis: true     # TODO
 sidebar: true
 sidebar-featured-tags: true
 sidebar-about-description: "写写代码，做做设计，看看产品。世界那么大，多玩玩看看。"
-sidebar-avatar: /img/avatar.png
+sidebar-avatar: /assets/img/avatar.png
 
 friends: [{
         title: "Wowser Blog",
