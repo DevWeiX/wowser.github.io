@@ -5,14 +5,22 @@ layout: default
 <main class="col-md-8 main-content">
 
 <!-- 标签列表 -->
+
+
+<script type="text/javascript">
+    var curTag = $.query.get("tag");
+	{% assign name = '"+curTag+"' %}
+</script>
+name = {{ name }}
 {% for tag in site.tags %}
+
 	{% if tag[0] == 'Android' %}
 		<div class="cover tag-cover">
 			<h3 class="tag-name" id="{{ tag[0] }}">
 				标签：{{ tag[0] }}
 			</h3>
 			<div class="post-count">
-				共 {{tag.numbers}} 篇文章
+				共 {{tag.number}} 篇文章
 			</div>
 		</div>
 		{% for post in tag %}
@@ -21,21 +29,21 @@ layout: default
 			<div class="post-head">
 				<h1 class="post-title"><a href="{{ post.url | prepend: site.baseurl }}" >{{ post.title }}</a></h1>
 				<div class="post-meta">
-					<span class="author">作者：<a href="../../author/wangsai/index.htm" tppabs="http://www.ghostchina.com/author/wangsai/">王赛</a></span> &bull;
-					<time class="post-date" datetime="2015年9月7日星期一凌晨4点31分" title="2015年9月7日星期一凌晨4点31分">2015年9月7日</time>
+					<span class="author">作者：<a href="../../author/wangsai/index.htm">王赛</a></span> &bull;
+					<time class="post-date" >2015年9月7日</time>
 				</div>
 			</div>
 			<div class="post-content">
-				<p>Ghost 0.7.0 已经正式发布了！此版本主要对后台 UI 的重构，既包含重新设计，也包含底层功能的重大改进。0.7.0 还为即将到来的 API 做了很多铺垫工作。 Ghost 0.7.0 的主要改进 [新增] 设计新后台界面 [新增] 后台能够搜索博文和用户 [新增] 安</p>
+				<p>Ghost 0.7.0 已经正式发布了</p>
 			</div>
 			<div class="post-permalink">
-				<a href="../../ghost-0-7-0-released/index.htm" class="btn btn-default">阅读全文</a>
+				<a href="#" class="btn btn-default">阅读全文</a>
 			</div>
 
 			<footer class="post-footer clearfix">
 				<div class="pull-left tag-list">
 					<i class="fa fa-folder-open-o"></i>
-					<a href="index.htm" tppabs="http://www.ghostchina.com/tag/about-ghost/">Ghost</a>, <a href="../release/index.htm" tppabs="http://www.ghostchina.com/tag/release/">新版本发布</a>, <a href="../ghost-0-7-ban-ben/index.htm" tppabs="http://www.ghostchina.com/tag/ghost-0-7-ban-ben/">Ghost 0.7 版本</a>
+					<a href="#">Ghost</a>, <a href="../release/index.htm" >新版本发布</a>, <a href="#" >Ghost 0.7 版本</a>
 				</div>
 				<div class="pull-right share">
 				</div>
@@ -54,10 +62,3 @@ layout: default
 		</header>
 	</article>
 </main>
-
-<script type="text/javascript">
-	var dataStr = '{ {% for tag in site.tags %}{% if tag[0] != site.tags.first[0] %},{% endif %}"{{ tag[0] }}":[{% for post in tag[1] %}{% if post != tag[1].first %},{% endif %}{"url":"{{post.url}}","tags":"{{post.tags}}","author":"{{post.author}}","title":"{{post.title}}", "date":"{{post.date | date:"%d/%m/%Y"}}"}{% endfor %}]{% endfor %} }';
-    var data = $.parseJSON(dataStr);
-    var curTag = $.query.get("tag");
-    var archieves = data[curTag];
-</script>
