@@ -9,7 +9,7 @@ layout: default
 
 <script type="text/javascript">
     var curTag = $.query.get("tag");
-	{% assign name = '"+curTag+"' %}
+	{% assign name = curTag %}
 </script>
 name = {{ name }}
 {% for tag in site.tags %}
