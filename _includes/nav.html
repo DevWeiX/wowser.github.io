@@ -23,7 +23,10 @@
 				</div>
 				<div class="collapse navbar-collapse" id="main-menu">
 					<ul class="menu">
-						
+						<li id="menu-home" role="presentation"><a href="{{site.url}}">首页</li>
+						<li id="menu-forum" role="presentation"><a href="{{}}">社区</li>
+						<li id="menu-tags" role="presentation"><a href="{{site.url}}/tags">标签</li>
+						<li id="menu-about" role="presentation"><a href="{{site.url}}/about">关于</li>
 					</ul>
 				</div>
 			</div>
@@ -33,6 +36,11 @@
 <!-- end navigation -->
 
 <script type="text/javascript">
-	var menu = {% if page.menu %}{{page.menu}}{% else %}'menu'{% endif %};
-	alert(menu);
+	var menu = {% if page.menu %}"{{page.menu}}"{% endif %};
+	if(menu=="home")
+		$("#menu-home").addClass("nav-current");
+	if(menu=="tags")
+		$("#menu-tags").addClass("nav-current");
+	if(menu=="about")
+		$("#menu-about").addClass("nav-current");
 </script>
