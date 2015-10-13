@@ -8,6 +8,7 @@ description: "关于前端与设计、黑客与画家 | Wowser，Web & Mobile Lo
 keyword: "Wowser, @Wowser, Wowser的博客, Wowser Blog, 博客, 个人网站, 互联网, 前端, 设计, 产品"
 baseurl: ""
 url: "http://blog.xaccp.cn"
+logo: /assets/img/logo.png
 
 RSS: false
 weibo_username:     
