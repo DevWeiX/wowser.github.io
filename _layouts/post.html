@@ -17,7 +17,9 @@ layout: default
 		<footer class="post-footer clearfix">
 			<div class="pull-left tag-list">
 				<i class="fa fa-folder-open-o"></i>
-				<a href="#">Promise</a>, <a href="#">JavaScript</a>
+				{% for tag in page.tags %}
+					<a href='/tag/?tag={{tag}}'> {{tag}} </a>
+				{% endfor %}
 			</div>
 			<!-- Share start -->
 			{% if site.useDuoshuo && site.useShare %}
