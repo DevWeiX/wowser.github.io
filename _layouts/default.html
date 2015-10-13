@@ -25,9 +25,14 @@
 
 				<!-- start widget -->
 				<div class="widget">
-					<h4 class="title">下载</h4>
-					<div class="content download">
-						<a href="#" class="btn btn-default btn-block">中文版</a>
+					<h4 class="title"><a href="/about/">关于我</a></h4>
+					<div class="content">
+						{% if site.sidebar-avatar %}
+                            <img src="{{site.sidebar-avatar}}" />
+                        {% endif %}
+                        {% if site.sidebar-about-description %}
+                            <p>{{site.sidebar-about-description}}</p>
+                        {% endif %}
 					</div>
 				</div>
 				<!-- end widget -->	
