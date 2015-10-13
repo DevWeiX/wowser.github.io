@@ -3,65 +3,47 @@ layout: default
 ---
 
 <main class="col-md-8 main-content">
-
 <!-- 标签列表 -->
-
-
+<div class="cover tag-cover">
+	<h3 class="tag-name" ></h3>
+	<div class="post-count"></div>
+</div>
 <script type="text/javascript">
-    var curTag = $.query.get("tag");
-	var dataStr = '{ {% for tag in site.tags %}{% if tag[0] != site.tags.first[0] %},{% endif %}"{{ tag[0] }}":[{% for post in tag[1] %}{% if post != tag[1].first %},{% endif %}{"url":"{{post.url}}", "title":"{{post.title}}", "date":"{{post.date | date:"%d/%m/%Y"}}"}{% endfor %}]{% endfor %} }';
+	var dataStr = '{ {% for tag in site.tags %}{% if tag[0] != site.tags.first[0] %},{% endif %}"{{ tag[0] }}":[{% for post in tag[1] %}{% if post != tag[1].first %},{% endif %}{"url":"{{post.url}}", "title":"{{post.title}}", "author":"{{post.author}}","content":"{{ post.content | strip_html | truncate:200 }}","tags":"{{post.tags}}","date":"{{post.date | date:"%d/%m/%Y"}}"}{% endfor %}]{% endfor %} }';
     var data = jQuery.parseJSON(dataStr);
     var curTag = $.query.get("tag");
     var curData = data[curTag];
-	alert(curData);
+	$("#tag-name").html("标签："+curTag);s
+	$("#post-count").html("共 "+curData.length+" 篇文章");
+	var html = "";
+	for(var i = 0;i<curData.length;i++){
+		html+=
+		"<article id=92 class='post tag-about-ghost tag-release tag-ghost-0-7-ban-ben'>"+
+			"<div class='post-head'>"+
+				"<h1 class='post-title'><a href='"+curData[i].url+"'>"+curData[i].title+"</a></h1>"+
+				"<div class="post-meta">"+
+					"<span class='author'>作者：<a href='#'>"+curData[i].author+"</a></span> &bull;"+
+					"<time class='post-date'>"+curData[i].date+"</time>"+
+				"</div>"+
+			"</div>"+
+			"<div class='post-content'>"+curData[i].content+
+			"</div>"+
+			"<div class='post-permalink'>"+
+				"<a href='"+curData[i].url+"' class='btn btn-default'>阅读全文</a>"+
+			"</div>"+
+			"<footer class='post-footer clearfix'>"+
+				"<div class='pull-left tag-list'>"+
+					"<i class='fa fa-folder-open-o'></i>";
+			for (var j = 0;j<curData[i].tags.length;j++)
+			{
+				html+="<a href='/tags/#"+curData[i].tags[j]+"'>"+curData[i].tags[j]+"</a>&nbsp;";
+			}
+				html+="</div>"+
+				"<div class='pull-right share'>"+
+				"</div>"+
+			"</footer>"+
+		"</article>";
+	}
+	$("#main-content").html(html);
 </script>
-{% for tag in site.tags %}
-
-	{% if tag[0] == 'Android' %}
-		<div class="cover tag-cover">
-			<h3 class="tag-name" id="{{ tag[0] }}">
-				标签：{{ tag[0] }}
-			</h3>
-			<div class="post-count">
-				共 {{tag.number}} 篇文章
-			</div>
-		</div>
-		{% for post in tag %}
-		<article id=92 class="post tag-about-ghost tag-release tag-ghost-0-7-ban-ben">
-
-			<div class="post-head">
-				<h1 class="post-title"><a href="{{ post.url | prepend: site.baseurl }}" >{{ post.title }}</a></h1>
-				<div class="post-meta">
-					<span class="author">作者：<a href="../../author/wangsai/index.htm">王赛</a></span> &bull;
-					<time class="post-date" >2015年9月7日</time>
-				</div>
-			</div>
-			<div class="post-content">
-				<p>Ghost 0.7.0 已经正式发布了</p>
-			</div>
-			<div class="post-permalink">
-				<a href="#" class="btn btn-default">阅读全文</a>
-			</div>
-
-			<footer class="post-footer clearfix">
-				<div class="pull-left tag-list">
-					<i class="fa fa-folder-open-o"></i>
-					<a href="#">Ghost</a>, <a href="../release/index.htm" >新版本发布</a>, <a href="#" >Ghost 0.7 版本</a>
-				</div>
-				<div class="pull-right share">
-				</div>
-			</footer>
-		</article>
-		{% endfor %}
-	{% endif %}
-{% endfor %}
-	<article class="post page">
-		<header class="post-head">
-				<h1 class="post-title"  id="{{ tag[0] }}">{{ tag[0] }}</h1>
-				
-				<section class="post-meta">
-					<span class="author"><a href=""></a></span>
-				</section>
-		</header>
-	</article>
 </main>
