@@ -12,9 +12,9 @@ layout: default
 <script type="text/javascript">
 	var curTag = $.query.get("tag");
 	var html="";
+	var count = 0;
     $.getJSON("/post.json", function(data) {
       $.each(data,function(i, item) {
-		 var count = 0;
         $.each(item.tags,function(j, tag) {
           if (tag == curTag) {
 			html+=
@@ -47,9 +47,8 @@ layout: default
           }
         });
       });
-	$("#main-content").html(html);
+	$(".main-content").html(html);
+	$(".tag-name").html("标签："+curTag);
+	$(".post-count").html("共 "+count+" 篇文章");
     });
-	/*
-	$("#tag-name").html("标签："+curTag);s
-	$("#post-count").html("共 "+curData.length+" 篇文章");*/
 </script>
