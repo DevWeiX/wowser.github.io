@@ -28,7 +28,7 @@ useDuoshuo: true
 useShare: true
 useBaiduAnalysis: true
 useTencentAnalysis: true
-useGoogleAnalysis: true     # TODO
+useGoogleAnalysis: true
 
 sidebar: true
 sidebar-featured-tags: true
