@@ -8,44 +8,48 @@ layout: default
 	<h3 class="tag-name" ></h3>
 	<div class="post-count"></div>
 </div>
+</main>
 <script type="text/javascript">
-	var dataStr = '{ {% for tag in site.tags %}{% if tag[0] != site.tags.first[0] %},{% endif %}"{{ tag[0] }}":[{% for post in tag[1] %}{% if post != tag[1].first %},{% endif %}{"url":"{{post.url}}", "title":"{{post.title}}", "author":"{{post.author}}","content":"{{post.content|strip_newlines|newline_to_br|strip_html|remove:'“'|remove:'”'|truncate:200}}","tags":"{{post.tags}}","date":"{{post.date | date:"%d/%m/%Y"}}"}{% endfor %}]{% endfor %} }';
-	alert(dataStr);
-    var data = jQuery.parseJSON(dataStr);
-    var curTag = $.query.get("tag");
-    var curData = data[curTag];
+	var curTag = $.query.get("tag");
+	var html="";
+    $.getJSON("/post.json", function(data) {
+      $.each(data,function(i, item) {
+		 var count = 0;
+        $.each(item.tags,function(j, tag) {
+          if (tag == curTag) {
+			html+=
+			"<article id=92 class='post tag-about-ghost tag-release tag-ghost-0-7-ban-ben'>"+
+				"<div class='post-head'>"+
+					"<h1 class='post-title'><a href='"+item.url+"'>"+item.title+"</a></h1>"+
+					"<div class='post-meta'>"+
+						"<span class='author'>作者：<a href='/about'>"+item.author+"</a></span>"+
+						"<time class='post-date'>"+item.date+"</time>"+
+					"</div>"+
+				"</div>"+
+				"<div class='post-content'>"+item.content+
+				"</div>"+
+				"<div class='post-permalink'>"+
+					"<a href='"+item.url+"' class='btn btn-default'>阅读全文</a>"+
+				"</div>"+
+				"<footer class='post-footer clearfix'>"+
+					"<div class='pull-left tag-list'>"+
+						"<i class='fa fa-folder-open-o'></i>";
+						for (var j = 0;j<item.tags.length;j++)
+						{
+							html+="<a href='/tags/?tag="+item.tags[j]+"'>"+item.tags[j]+"</a>";
+						}
+						html+="</div>"+
+					"<div class='pull-right share'>"+
+					"</div>"+
+				"</footer>"+
+			"</article>";
+            count++;
+          }
+        });
+      });
+	$("#main-content").html(html);
+    });
 	/*
 	$("#tag-name").html("标签："+curTag);s
 	$("#post-count").html("共 "+curData.length+" 篇文章");*/
-	var html = "";
-	for(var i = 0;i<curData.length;i++){
-		html+=
-		"<article id=92 class='post tag-about-ghost tag-release tag-ghost-0-7-ban-ben'>"+
-			"<div class='post-head'>"+
-				"<h1 class='post-title'><a href='"+curData[i].url+"'>"+curData[i].title+"</a></h1>"+
-				"<div class="post-meta">"+
-					"<span class='author'>作者：<a href='#'>"+curData[i].author+"</a></span> &bull;"+
-					"<time class='post-date'>"+curData[i].date+"</time>"+
-				"</div>"+
-			"</div>"+
-			"<div class='post-content'>"+curData[i].content+
-			"</div>"+
-			"<div class='post-permalink'>"+
-				"<a href='"+curData[i].url+"' class='btn btn-default'>阅读全文</a>"+
-			"</div>"+
-			"<footer class='post-footer clearfix'>"+
-				"<div class='pull-left tag-list'>"+
-					"<i class='fa fa-folder-open-o'></i>";
-			for (var j = 0;j<curData[i].tags.length;j++)
-			{
-				html+="<a href='/tags/#"+curData[i].tags[j]+"'>"+curData[i].tags[j]+"</a>&nbsp;";
-			}
-				html+="</div>"+
-				"<div class='pull-right share'>"+
-				"</div>"+
-			"</footer>"+
-		"</article>";
-	}
-	$("#main-content").html(html);
 </script>
-</main>
