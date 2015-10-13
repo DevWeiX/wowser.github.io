@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<!-- start logo -->
-				<a class="branding" href="{{site.url}}" title="{{ site.title}}"><img src="http://static.ghostchina.com/image/b/46/4f5566c1f7bc28b3f7ac1fada8abe.png" alt="{{ site.title}}"></a>
+				<a class="branding" href="{{site.url}}" title="{{ site.title}}"><img src="{{ site.sidebar-avatar}}" alt="{{ site.title}}"></a>
 			</div>
 		</div>
 	</div>
@@ -23,10 +23,6 @@
 				</div>
 				<div class="collapse navbar-collapse" id="main-menu">
 					<ul class="menu">
-						<li {% if page.menu %}{% if page.menu = 'home' %} class="nav-current" {% endif %}{% endif%} role="presentation"><a href="{{site.url}}">首页</a></li>
-						<li role="presentation"><a href="http://wenda.coding.io" >论坛</a></li>
-						<li {% if page.menu %}{% if page.menu = 'tags' %} class="nav-current" {% endif %}{% endif%}  role="presentation"><a href="/tags" >标签</a></li>
-						<li {% if page.menu %}{% if page.menu = 'about' %} class="nav-current" {% endif %}{% endif%}   role="presentation"><a href="/about">关于</a></li>
 					</ul>
 				</div>
 			</div>
