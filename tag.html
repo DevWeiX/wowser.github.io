@@ -2,6 +2,7 @@
 layout: default
 ---
 
+
 <main class="col-md-8 main-content">
 <!-- 标签列表 -->
 <div class="cover tag-cover">
@@ -9,6 +10,8 @@ layout: default
 	<div class="post-count"></div>
 </div>
 </main>
+
+<script src="{{ "/assets/js/Jquery.Query.js" | prepend: site.baseurl }}"></script>
 <script type="text/javascript">
 	var curTag = $.query.get("tag");
 	var html="";
