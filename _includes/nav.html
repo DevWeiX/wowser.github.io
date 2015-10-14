@@ -12,7 +12,7 @@
 				<div class="collapse navbar-collapse" id="main-menu">
 					<ul class="menu">
 						<li {% if page.menu %}{% if page.menu == "home"%}class="nav-current"{% endif %}{% endif %} role="presentation"><a href="{{site.url}}">首页</a></li>
-						<li role="presentation"><a href="http://wenda.coding.io">社区</li>
+						<li role="presentation"><a href="{{site.wenda}}">社区</li>
 						<li {% if page.menu %}{% if page.menu == "tags"%}class="nav-current"{% endif %}{% endif %} role="presentation"><a href="/tags">标签</a></li>
 						<li {% if page.menu %}{% if page.menu == "about"%}class="nav-current"{% endif %}{% endif %} role="presentation"><a href="/about">关于</a></li>
 					</ul>
